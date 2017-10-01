@@ -156,7 +156,7 @@ func setupSections(){
            self.contacts = try moc.fetch(myRequest) as! [NSManagedObject]
             
            
-                populateNames(contacts: contacts as! [NSManagedObject])
+                populateNames(contacts: contacts )
                 setupSections()
             
             
@@ -174,8 +174,8 @@ func setupSections(){
 
 func populateNames (contacts: [NSManagedObject]){
     for item in contacts{
-        var thisFirstName = item.value(forKey: "firstName") as! String
-        var thisLastName = item.value(forKey: "lastName") as? String
+        let thisFirstName = item.value(forKey: "firstName") as! String
+        let thisLastName = item.value(forKey: "lastName") as? String
         
         var fullName = thisFirstName
         
@@ -186,7 +186,7 @@ func populateNames (contacts: [NSManagedObject]){
        
         
         
-        var imageCheck = item.value(forKey: "contactImage")
+        let imageCheck = item.value(forKey: "contactImage")
         
         if imageCheck != nil {
 
@@ -323,7 +323,7 @@ func populateNames (contacts: [NSManagedObject]){
             appDelegate.persistentContainer.viewContext
         
         // 2
-        let entity =
+        _ =
             NSEntityDescription.entity(forEntityName: "Peeps",
                                        in: managedContext)!
         

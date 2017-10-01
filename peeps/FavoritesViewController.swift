@@ -41,7 +41,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate,UIColl
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         for item in favorites{
-            print(item.value(forKey: "firstName"))
+            print(item.value(forKey: "firstName") as Any)
         }
         print(favorites.count)
         collection.reloadData()
@@ -70,7 +70,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate,UIColl
         cell.name.text = contact.value(forKey: "firstName") as? String
         
         if contact.value(forKey: "contactImage") != nil {
-           var NScontactImage = contact.value(forKey: "contactImage") as! NSData
+           let NScontactImage = contact.value(forKey: "contactImage") as! NSData
             cell.image.image = UIImage(data: NScontactImage as Data)
         }
         if contact.value(forKey: "contactImage") == nil {

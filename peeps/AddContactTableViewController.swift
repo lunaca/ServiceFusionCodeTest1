@@ -105,7 +105,7 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
             groups = try managedContext.fetch(fetchRequest1)
             
             for item in groups{
-                var groupName = item.value(forKey: "groupName")
+                let groupName = item.value(forKey: "groupName")
                 self.groupNames.append(groupName as! String)
             }
         } catch let error as NSError {
@@ -125,7 +125,7 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -243,9 +243,9 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         var lName = ""
         var company = ""
         
-        var fNameTest = fNameTF.text
-        var lNameTest = lNameTF.text
-        var companyTest = companyTF.text
+        let fNameTest = fNameTF.text
+        let lNameTest = lNameTF.text
+        let companyTest = companyTF.text
         
         if fNameTest != nil && fNameTest != "" {
             fName = fNameTest!
@@ -262,9 +262,9 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         var phone2 = ""
         var phone3 = ""
         
-        var phone1Test = phone1TF.text
-        var phone2Test = phone2TF.text
-        var phone3Test = phone3TF.text
+        let phone1Test = phone1TF.text
+        let phone2Test = phone2TF.text
+        let phone3Test = phone3TF.text
         
         if phone1Test != nil && phone1Test != "" {
             phone1 =  phone1Test!
@@ -282,9 +282,9 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         var email2 = ""
         var email3 = ""
         
-        var email1Test = email1TF.text
-        var email2Test = email2TF.text
-        var email3Test = email3TF.text
+        let email1Test = email1TF.text
+        let email2Test = email2TF.text
+        let email3Test = email3TF.text
         
         if email1Test != nil && email1Test != "" {
             email1 =  email1Test!
@@ -302,9 +302,9 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         var address2 = ""
         var address3 = ""
         
-        var address1Test = address1TF.text
-        var address2Test = address2TF.text
-        var address3Test = address3TF.text
+        let address1Test = address1TF.text
+        let address2Test = address2TF.text
+        let address3Test = address3TF.text
         
         if address1Test != nil && address1Test != "" {
             address1 =  address1Test!
@@ -331,9 +331,9 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         
         
         myDatePicker.datePickerMode = UIDatePickerMode.date
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
-        var selectedDate = dateFormatter.string(from: myDatePicker.date)
+        let selectedDate = dateFormatter.string(from: myDatePicker.date)
         print(selectedDate)
         var birthday : String?
         if selectedDate != result {
@@ -344,7 +344,7 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
         
         
         if imageToggle == 1 {
-            var userImage = contactImageView.image
+            let userImage = contactImageView.image
             
             let imageData = NSData(data: UIImageJPEGRepresentation(userImage!, 1.0)!)
             self.contact?.setValue(imageData, forKey: "contactImage")
@@ -359,7 +359,7 @@ class AddContactTableViewController: UITableViewController, UIPickerViewDelegate
             appDelegate.persistentContainer.viewContext
         
         // 2 then get entity
-        let entity =
+        _ =
             NSEntityDescription.entity(forEntityName: "Peeps",
                                        in: managedContext)!
         

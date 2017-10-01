@@ -6,7 +6,7 @@
 //  Copyright © 2017 lunaca software solutions. All rights reserved.
 //
 
-import UIKit
+import UIKit 
 import CoreData
 
 class ContactTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -57,7 +57,7 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
-        var imageCheck = contact.value(forKey: "contactImage")
+        let imageCheck = contact.value(forKey: "contactImage")
         if imageCheck != nil {
             
             let image = contact.value(forKey: "contactImage") as! NSData
@@ -68,8 +68,8 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
         }
         setToggles()
         
-        var fName = contact.value(forKey: "firstName") as! String
-        var lName = contact.value(forKey: "lastName") as! String
+        let fName = contact.value(forKey: "firstName") as! String
+        let lName = contact.value(forKey: "lastName") as! String
         
         self.fNameTF.text = fName
         self.fNameTF.textColor = UIColor.white
@@ -95,7 +95,7 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
             groups = try managedContext.fetch(fetchRequest1)
             
             for item in groups{
-                var groupName = item.value(forKey: "groupName")
+                let groupName = item.value(forKey: "groupName")
                 self.groupNames.append(groupName as! String)
             }
         } catch let error as NSError {
@@ -106,21 +106,21 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     func setToggles(){
        
-        var phoneTest = contact.value(forKey: "phone1") as? String
+        let phoneTest = contact.value(forKey: "phone1") as? String
         //phone
         if phoneTest != nil && phoneTest != "" {
             self.phoneShowToggles[0] = true
             self.phoneNums.append(phoneTest!)
             self.phone1TF.text = phoneTest!
             
-            var phoneTest2 = contact.value(forKey: "phone2") as? String
+            let phoneTest2 = contact.value(forKey: "phone2") as? String
             if phoneTest2 != nil && phoneTest2 != ""{
                 self.phoneShowCount = 1
                 self.phoneShowToggles[1] = true
                 self.phoneNums.append(phoneTest2!)
                  self.phone2TF.text = phoneTest2!
                
-                var phoneTest3 = contact.value(forKey: "phone3") as? String
+                let phoneTest3 = contact.value(forKey: "phone3") as? String
 
                 if phoneTest3 != nil && phoneTest3 != ""{
                     self.phoneShowToggles[2] = true
@@ -132,13 +132,13 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
 
     }
         }
-        var emailTest = contact.value(forKey: "email1") as? String
+        let emailTest = contact.value(forKey: "email1") as? String
         //email
         if emailTest != nil && emailTest != "" {
             self.emailShowToggles[0] = true
             self.emails.append(emailTest!)
             self.email1TF.text = emailTest!
-             var emailTest2 = contact.value(forKey: "email2") as? String
+             let emailTest2 = contact.value(forKey: "email2") as? String
             
             
             if emailTest2 != nil && emailTest2 != "" {
@@ -147,7 +147,7 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
                 self.emails.append(emailTest2!)
                 self.email2TF.text = emailTest2!
                
-                var emailTest3 = contact.value(forKey: "email3") as? String
+                let emailTest3 = contact.value(forKey: "email3") as? String
 
                 if emailTest3  != nil && emailTest3 != "" {
                     self.emailShowToggles[2] = true
@@ -158,13 +158,13 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
                 
             }
         }
-            var addressTest = contact.value(forKey: "address1") as? String
+            let addressTest = contact.value(forKey: "address1") as? String
             //address
             if addressTest != nil && addressTest != "" {
                 self.addressShowToggles[0] = true
                 self.addresses.append(contact.value(forKey: "address1") as! String)
-                self.address1TF.text = contact.value(forKey: "address1") as! String
-                var addressTest2 = contact.value(forKey: "address2") as? String
+                self.address1TF.text = (contact.value(forKey: "address1") as! String)
+                let addressTest2 = contact.value(forKey: "address2") as? String
 
                 if addressTest2 != nil && addressTest2 != "" {
                     self.addressShowCount = 1
@@ -172,7 +172,7 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
                     self.addresses.append(addressTest2!)
                     self.address2TF.text = addressTest2!
                     
-                    var addressTest3 = contact.value(forKey: "address3") as? String
+                    let addressTest3 = contact.value(forKey: "address3") as? String
                     
                     if addressTest3  != nil && addressTest3 != "" {
                         self.addressShowToggles[2] = true
@@ -195,7 +195,7 @@ class ContactTableViewController: UITableViewController, UIPickerViewDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 
@@ -313,9 +313,9 @@ func saveGroup(name: String) {
         var lName = ""
         var company = ""
         
-        var fNameTest = fNameTF.text
-        var lNameTest = lNameTF.text
-        var companyTest = companyTF.text
+        let fNameTest = fNameTF.text
+        let lNameTest = lNameTF.text
+        let companyTest = companyTF.text
         
          if fNameTest != nil && fNameTest != "" {
             fName = fNameTest!
@@ -332,9 +332,9 @@ func saveGroup(name: String) {
         var phone2 = ""
         var phone3 = ""
         
-        var phone1Test = phone1TF.text
-        var phone2Test = phone2TF.text
-        var phone3Test = phone3TF.text
+        let phone1Test = phone1TF.text
+        let phone2Test = phone2TF.text
+        let phone3Test = phone3TF.text
         
         if phone1Test != nil && phone1Test != "" {
             phone1 =  phone1Test!
@@ -352,9 +352,9 @@ func saveGroup(name: String) {
         var email2 = ""
         var email3 = ""
         
-        var email1Test = email1TF.text
-        var email2Test = email2TF.text
-        var email3Test = email3TF.text
+        let email1Test = email1TF.text
+        let email2Test = email2TF.text
+        let email3Test = email3TF.text
         
         if email1Test != nil && email1Test != "" {
             email1 =  email1Test!
@@ -372,9 +372,9 @@ func saveGroup(name: String) {
         var address2 = ""
         var address3 = ""
         
-        var address1Test = address1TF.text
-        var address2Test = address2TF.text
-        var address3Test = address3TF.text
+        let address1Test = address1TF.text
+        let address2Test = address2TF.text
+        let address3Test = address3TF.text
         
         if address1Test != nil && address1Test != "" {
             address1 =  address1Test!
@@ -401,9 +401,9 @@ func saveGroup(name: String) {
         
         
         myDatePicker.datePickerMode = UIDatePickerMode.date
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy"
-        var selectedDate = dateFormatter.string(from: myDatePicker.date)
+        let selectedDate = dateFormatter.string(from: myDatePicker.date)
         print(selectedDate)
         var birthday : String?
         if selectedDate != result {
@@ -414,7 +414,7 @@ func saveGroup(name: String) {
         
     
         if imageToggle == 1 {
-            var userImage = contactImageView.image
+            let userImage = contactImageView.image
             
             let imageData = NSData(data: UIImageJPEGRepresentation(userImage!, 1.0)!)
             contact.setValue(imageData, forKey: "contactImage")
@@ -429,7 +429,7 @@ func saveGroup(name: String) {
             appDelegate.persistentContainer.viewContext
         
         // 2 then get entity
-        let entity =
+        _ =
             NSEntityDescription.entity(forEntityName: "Peeps",
                                        in: managedContext)!
         

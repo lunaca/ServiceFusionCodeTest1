@@ -43,7 +43,7 @@ class ContactLoaderViewController: ViewController {
             message = "Unable to fetch contacts."
         }
         var count1 = 0
-        var full = fullContacts.count-1
+        let full = fullContacts.count-1
         
         //now that we have all the contacts, we will save the entries into CORE DATA
         
@@ -65,21 +65,21 @@ class ContactLoaderViewController: ViewController {
         
         //this loop will saving all of the contact info!!
         for contact in fullContacts{
-            var progress = CGFloat(count1/full)
+            _ = CGFloat(count1/full)
           
             
        
-            var firstName = contact.givenName
+            let firstName = contact.givenName
            
             
-            var lastName = contact.familyName
+            let lastName = contact.familyName
           
             var birthday : String = ""
             if contact.birthday != nil{
                 birthday = String(describing: contact.birthday!.month!) + "/" + String(describing: contact.birthday!.day!) + "/" + String(describing: contact.birthday!.year!)
                 
             }
-            var nickname = contact.nickname
+            let nickname = contact.nickname
            
             
             var count = 0

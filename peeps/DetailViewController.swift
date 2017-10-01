@@ -32,7 +32,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
        
-       var name = contact.value(forKey: "firstName") as! String
+       let name = contact.value(forKey: "firstName") as! String
         contactName.text = name
         self.headers = []
         self.rows = []
@@ -46,7 +46,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         
-        var imageCheck = contact.value(forKey: "contactImage")
+        let imageCheck = contact.value(forKey: "contactImage")
         
         if imageCheck != nil {
             
@@ -65,7 +65,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func determineSections(){
         var total = 0
         var rowCounter = 0
-        var nicknameTest = contact.value(forKey: "company") as? String
+        let nicknameTest = contact.value(forKey: "company") as? String
         //company
         if nicknameTest != nil && nicknameTest != "" {
             self.headers.append("Company")
@@ -76,7 +76,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             indices.append(total)
         }
         rowCounter = 0
-        var phoneTest = contact.value(forKey: "phone1") as? String
+        let phoneTest = contact.value(forKey: "phone1") as? String
         //phone
          if phoneTest != nil && phoneTest != "" {
                self.headers.append( "Phone")
@@ -90,14 +90,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             self.rows.append(contact.value(forKey: "phone1") as! String)
             rowCounter += 1
-            var phoneTest2 = contact.value(forKey: "phone2") as? String
+            let phoneTest2 = contact.value(forKey: "phone2") as? String
 
             if phoneTest2 != nil  && phoneTest2 != "" {
-                self.rows.append(phoneTest2 as! String)
+                self.rows.append(phoneTest2!)
                 rowCounter += 1
-                  var phoneTest3 = contact.value(forKey: "phone3") as? String
+                  let phoneTest3 = contact.value(forKey: "phone3") as? String
                 if phoneTest3 != nil   && phoneTest3 != ""{
-                    self.rows.append(phoneTest3 as! String)
+                    self.rows.append(phoneTest3!)
                     rowCounter += 1
                 }
             }
@@ -106,7 +106,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             indices.append(total)
         }
         rowCounter = 0
-        var emailTest = contact.value(forKey: "email1") as? String
+        let emailTest = contact.value(forKey: "email1") as? String
      //email
         if emailTest != nil && emailTest != "" {
             self.headers.append("Email")
@@ -115,14 +115,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             emailButton.isEnabled = true
             self.rows.append(contact.value(forKey: "email1") as! String)
             rowCounter += 1
-            var emailTest2 = contact.value(forKey: "email2") as? String
+            let emailTest2 = contact.value(forKey: "email2") as? String
             
             if emailTest2 != nil  && emailTest2 != "" {
-                self.rows.append(emailTest2 as! String)
+                self.rows.append(emailTest2!)
                 rowCounter += 1
-                var emailTest3 = contact.value(forKey: "email3") as? String
+                let emailTest3 = contact.value(forKey: "email3") as? String
                 if emailTest3 != nil   && emailTest3 != ""{
-                    self.rows.append(emailTest3 as! String)
+                    self.rows.append(emailTest3!)
                     rowCounter += 1
                 }
             }
@@ -131,21 +131,21 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             indices.append(total)
         }
         rowCounter = 0
-        var addressTest = contact.value(forKey: "address1") as? String
+        let addressTest = contact.value(forKey: "address1") as? String
         //address
         if addressTest != nil && addressTest != "" {
             self.headers.append("Address")
             
             self.rows.append(contact.value(forKey: "address1") as! String)
             rowCounter += 1
-            var addressTest2 = contact.value(forKey: "address2") as? String
+            let addressTest2 = contact.value(forKey: "address2") as? String
             
             if addressTest2 != nil  && addressTest2 != "" {
-                self.rows.append(addressTest2 as! String)
+                self.rows.append(addressTest2!)
                 rowCounter += 1
-                var addressTest3 = contact.value(forKey: "address3") as? String
+                let addressTest3 = contact.value(forKey: "address3") as? String
                 if addressTest3 != nil   && addressTest3 != ""{
-                    self.rows.append(addressTest3 as! String)
+                    self.rows.append(addressTest3!)
                     rowCounter += 1
                 }
             }
@@ -157,7 +157,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 
         //birthday
         rowCounter = 0
-        var birthdayTest = contact.value(forKey: "birthday") as? String
+        let birthdayTest = contact.value(forKey: "birthday") as? String
        
         if birthdayTest != nil && birthdayTest != "" {
 
@@ -205,7 +205,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             appDelegate.persistentContainer.viewContext
         
         // 2 then get entity
-        let entity =
+        _ =
             NSEntityDescription.entity(forEntityName: "Peeps",
                                        in: managedContext)!
         

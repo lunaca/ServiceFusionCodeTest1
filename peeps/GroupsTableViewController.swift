@@ -51,7 +51,7 @@ class GroupsTableViewController: UITableViewController{
        
         var total = 0
         for item in groupCounts{
-            var thisValue = item + total
+            let thisValue = item + total
             self.indices.append(thisValue)
             total += item
         }
@@ -74,9 +74,9 @@ class GroupsTableViewController: UITableViewController{
         // 1 first get context
         let moc = appDelegate.persistentContainer.viewContext
       
-        var count = 0
+        _ = 0
         for item in groups{
-            var groupName = item.value(forKey: "groupName") as! String
+            let groupName = item.value(forKey: "groupName") as! String
             
             let myRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Peeps")
             
@@ -131,11 +131,11 @@ class GroupsTableViewController: UITableViewController{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AllTableViewCell;
         if contacts.count != 0 {
-            cell.name.text = contacts[contactCounter].value(forKey: "firstName") as! String
+            cell.name.text = contacts[contactCounter].value(forKey: "firstName") as? String
         
-        var imageTest = contacts[contactCounter].value(forKey: "contactImage") as? NSData
+        let imageTest = contacts[contactCounter].value(forKey: "contactImage") as? NSData
         if imageTest != nil{
-            cell.pic.image = UIImage(data: imageTest as! Data)
+            cell.pic.image = UIImage(data: imageTest! as Data)
         }
         if imageTest == nil{
             cell.pic.image = UIImage(named: "white.png")
@@ -158,9 +158,9 @@ class GroupsTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.black
-      var group =  self.groups[section]
+      let group =  self.groups[section]
             let label = UILabel()
-            label.text = group.value(forKey: "groupName") as! String
+            label.text = group.value(forKey: "groupName") as? String
             label.frame = CGRect(x: 25, y: 5, width: 500, height: 35)
             label.textColor = UIColor.white
             label.font = UIFont(name: "Avenir Heavy", size: 30.0)
@@ -170,9 +170,9 @@ class GroupsTableViewController: UITableViewController{
         return view
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var group =  self.groups[section]
+        let group =  self.groups[section]
        
-        var headerTitle = group.value(forKey: "groupName") as! String
+        let headerTitle = group.value(forKey: "groupName") as! String
         return headerTitle
     }
     
@@ -196,7 +196,7 @@ class GroupsTableViewController: UITableViewController{
             appDelegate.persistentContainer.viewContext
         
         // 2
-        let entity =
+        _ =
             NSEntityDescription.entity(forEntityName: "Peeps",
                                        in: managedContext)!
         
@@ -274,7 +274,7 @@ class GroupsTableViewController: UITableViewController{
             let detailsVC = segue.destination as! DetailViewController
             let cell = sender as! AllTableViewCell
             let indexPath =  self.tableView.indexPath(for: cell)
-            var index = (self.indices[(indexPath?.section)!] + (indexPath?.row)! ) 
+            let index = (self.indices[(indexPath?.section)!] + (indexPath?.row)! ) 
             print(index)
             let thisContact = contacts[index]
             detailsVC.contact = thisContact
